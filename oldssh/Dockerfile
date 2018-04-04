@@ -12,4 +12,4 @@ USER oldssh
 ADD ssh_config /home/oldssh/.ssh/config
 
 ENTRYPOINT ["ssh"]
-CMD ["--version"]
+CMD ["-V"]
