@@ -14,4 +14,3 @@ ADD --chown=oldssh:oldssh ssh_config /home/oldssh/.ssh/config
 ENV SSH_AUTH_SOCK=/var/run/ssh-agent.sock
 
 ENTRYPOINT ["/usr/bin/ssh"]
-CMD [""]
