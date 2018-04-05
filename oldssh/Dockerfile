@@ -5,14 +5,11 @@ RUN apt-get update && \
         openssh-client && \
     rm -rf /var/cache/apt/*
 
-ADD docker-entrypoint.sh /entry
-RUN chmod 0755 /entry
-
 RUN adduser --disabled-password --gecos '' oldssh
 USER oldssh
 
 ENV SSH_AUTH_SOCK=/var/run/ssh-agent.sock
 ADD --chown=oldssh:oldssh ssh_config /home/oldssh/.ssh/config
 
-ENTRYPOINT ["/entry"]
+ENTRYPOINT ["/usr/bin/ssh"]
 CMD ["-V"]
