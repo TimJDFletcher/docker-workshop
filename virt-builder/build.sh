@@ -14,7 +14,7 @@ virt-builder \
     --upload ssh-keygen.service:/etc/systemd/system/ssh-keygen.service \
     --timezone Europe/London \
     --ssh-inject root:file:yubikey.pub \
-    --edit '/etc/ssh/sshd_config:/^#PermitEmptyPasswords no/PermitEmptyPasswords yes/' \
+    --edit '/etc/ssh/sshd_config:s/^#PermitEmptyPasswords no/PermitEmptyPasswords yes/' \
     --firstboot-command 'useradd -s /bin/bash -m -G sudo -p "" admin ; chage -d 0 admin' \
     --link '/etc/systemd/system/ssh-keygen.service:/etc/systemd/system/multi-user.target.wants/ssh-keygen.service' \
     --link '/lib/systemd/system/serial-getty@.service:/etc/systemd/system/getty.target.wants/serial-getty@ttyS0.service' \
