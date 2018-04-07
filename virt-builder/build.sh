@@ -6,13 +6,13 @@ cache=/WDZBA365/archives/virt-builder
 
 virt-builder \
     --cache $cache \
-    --install dhcpcd5 \
+    --install dhcpcd5 sudo \
     --upload interfaces:/etc/network/interfaces \
     --upload issue:/etc/issue \
     --upload docker.keyring:/etc/apt/trusted.gpg.d/docker.gpg \
     --upload docker.list:/etc/apt/sources.list.d/docker.list \
     --upload ssh-keygen.service:/etc/systemd/system/ssh-keygen.service \
-    --firstboot-command 'useradd -m -G sudo -p "" admin ; chage -d 0 admin' \
+    --firstboot-command 'useradd -s /bin/bash -m -G sudo -p "" admin ; chage -d 0 admin' \
     --link '/etc/systemd/system/ssh-keygen.service:/etc/systemd/system/multi-user.target.wants/ssh-keygen.service' \
     --link '/lib/systemd/system/serial-getty@.service:/etc/systemd/system/getty.target.wants/serial-getty@ttyS0.service' \
     --size 20G -o $temp $os
