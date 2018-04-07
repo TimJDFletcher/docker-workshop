@@ -3,6 +3,8 @@ temp=$(mktemp )
 date=$(date +%Y%m%d-%H%M)
 os=debian-9
 cache=/WDZBA365/archives/virt-builder
+password=Docker2018
+user=admin
 
 virt-builder \
     --cache $cache \
@@ -12,9 +14,10 @@ virt-builder \
     --upload docker.list:/etc/apt/sources.list.d/docker.list \
     --upload ssh-keygen.service:/etc/systemd/system/ssh-keygen.service \
     --install dhcpcd5,sudo,vim,apt-transport-https,bash-completion \
+    --edit '/boot/grub/grub.cfg:s/vda/sda/' \
     --timezone Europe/London \
     --ssh-inject root:file:yubikey.pub \
-    --firstboot-command 'useradd -s /bin/bash -m -G adm,sudo -p "" admin ; echo admin:Docker2018 | chpasswd' \
+    --firstboot-command 'useradd -s /bin/bash -m -G adm,sudo -p "" $user ; echo ${user}:${password}|chpasswd' \
     --link '/etc/systemd/system/ssh-keygen.service:/etc/systemd/system/multi-user.target.wants/ssh-keygen.service' \
     --link '/lib/systemd/system/serial-getty@.service:/etc/systemd/system/getty.target.wants/serial-getty@ttyS0.service' \
     --size 10G -o $temp $os
