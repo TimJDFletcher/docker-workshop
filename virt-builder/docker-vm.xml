@@ -20,14 +20,16 @@
         <disk type='block' device='disk'>
             <driver name='qemu' type='raw' cache='none' io='native' discard='unmap'/>
             <source dev='/var/lib/libvirt/images/dockervm.raw'/>
-            <backingStore/>
-            <target dev='vda' bus='virtio'/>
-            <alias name='virtio-disk0'/>
+            <target dev='sda' bus='scsi'/>
+            <address type='drive' controller='0' bus='0' target='0' unit='0'/>
         </disk>
         <interface type='network'>
             <source network='external'/>
             <model type='virtio'/>
         </interface>
+        <controller type='scsi' index='0' model='virtio-scsi'>
+            <address type='pci' domain='0x0000' bus='0x00' slot='0x04' function='0x0'/>
+        </controller>
         <serial type='pty'>
             <target port='0'/>
             <alias name='serial0'/>
