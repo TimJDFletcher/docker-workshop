@@ -2,7 +2,7 @@
 temp=$(mktemp )
 date=$(date +%Y%m%d-%H%M)
 os=debian-9
-XDG_CACHE_HOME=/var/cache 
+XDG_CACHE_HOME=/WDZBA365/archives
 
 virt-builder \
     --install dhcpcd5 \
