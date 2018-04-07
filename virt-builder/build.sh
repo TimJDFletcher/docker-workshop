@@ -9,7 +9,7 @@ virt-builder \
     --upload admin.sudoers:/etc/sudoers.d/admin \
     --upload interfaces:/etc/network/interfaces \
     --upload ssh-keygen.service:/etc/systemd/system/ssh-keygen.service \
-    --firstboot-command 'useradd -m -G sudo -p "" admin ; chage -d 0 admin'
+    --firstboot-command 'useradd -m -G sudo -p "" admin ; chage -d 0 admin' \
     --link '/etc/systemd/system/ssh-keygen.service:/etc/systemd/system/multi-user.target.wants/ssh-keygen.service' \
     --link '/lib/systemd/system/serial-getty@.service:/etc/systemd/system/getty.target.wants/serial-getty@ttyS0.service' \
     --size 20G -o $temp $os
