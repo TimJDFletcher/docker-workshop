@@ -11,7 +11,7 @@ virt-builder \
     --upload docker.keyring:/etc/apt/trusted.gpg.d/docker.gpg \
     --upload docker.list:/etc/apt/sources.list.d/docker.list \
     --upload ssh-keygen.service:/etc/systemd/system/ssh-keygen.service \
-    --install dhcpcd5,sudo,vim,apt-transport-https,bash-completion,docker-ce \
+    --install dhcpcd5,sudo,vim,apt-transport-https,bash-completion \
     --timezone Europe/London \
     --ssh-inject root:file:yubikey.pub \
     --firstboot-command 'useradd -s /bin/bash -m -G adm,docker,sudo -p "Docker2018" admin' \
