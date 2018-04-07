@@ -1,7 +1,7 @@
 #!/bin/bash -e
 temp=$(mktemp )
 date=$(date +%Y%m%d-%H%M)
-os=debian9
+os=debian-9
 XDG_CACHE_HOME=/var/cache 
 
 virt-builder \
