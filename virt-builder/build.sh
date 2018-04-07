@@ -6,12 +6,12 @@ cache=/WDZBA365/archives/virt-builder
 
 virt-builder \
     --cache $cache \
-    --install dhcpcd5,sudo,vim,apt-transport-https,bash-completion \
     --upload interfaces:/etc/network/interfaces \
     --upload issue:/etc/issue \
     --upload docker.keyring:/etc/apt/trusted.gpg.d/docker.gpg \
     --upload docker.list:/etc/apt/sources.list.d/docker.list \
     --upload ssh-keygen.service:/etc/systemd/system/ssh-keygen.service \
+    --install dhcpcd5,sudo,vim,apt-transport-https,bash-completion,docker-ce \
     --timezone Europe/London \
     --ssh-inject root:file:yubikey.pub \
     --edit '/etc/ssh/sshd_config:s/^#PermitEmptyPasswords no/PermitEmptyPasswords yes/' \
