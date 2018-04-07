@@ -14,7 +14,7 @@ virt-builder \
     --install dhcpcd5,sudo,vim,apt-transport-https,bash-completion \
     --timezone Europe/London \
     --ssh-inject root:file:yubikey.pub \
-    --firstboot-command 'useradd -s /bin/bash -m -G adm,docker,sudo -p "Docker2018" admin' \
+    --firstboot-command 'useradd -s /bin/bash -m -G adm,sudo -p "$6$Krsex9Rv$2UmTsecgg/39WyvzN6bsHCTRNkgy9vQT6aIBCo1.uoFgB24bCJTyhGIscyQz6bTCYT0Q2pFQb9P2p1RXtyAwU/" admin' \
     --link '/etc/systemd/system/ssh-keygen.service:/etc/systemd/system/multi-user.target.wants/ssh-keygen.service' \
     --link '/lib/systemd/system/serial-getty@.service:/etc/systemd/system/getty.target.wants/serial-getty@ttyS0.service' \
     --size 10G -o $temp $os
