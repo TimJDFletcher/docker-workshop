@@ -9,6 +9,7 @@ virt-builder \
     --install dhcpcd5 \
     --upload interfaces:/etc/network/interfaces \
     --upload issue:/etc/issue \
+    --upload docker.keyring:/etc/apt/trusted.gpg.d/docker.gpg \
     --upload docker.list:/etc/apt/sources.list.d/docker.list \
     --upload ssh-keygen.service:/etc/systemd/system/ssh-keygen.service \
     --firstboot-command 'useradd -m -G sudo -p "" admin ; chage -d 0 admin' \
