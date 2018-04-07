@@ -2,9 +2,10 @@
 temp=$(mktemp )
 date=$(date +%Y%m%d-%H%M)
 os=debian-9
-XDG_CACHE_HOME=/WDZBA365/archives
+cache=/WDZBA365/archives/virt-bulder
 
 virt-builder \
+    --cache $cache \
     --install dhcpcd5 \
     --upload admin.sudoers:/etc/sudoers.d/admin \
     --upload interfaces:/etc/network/interfaces \
