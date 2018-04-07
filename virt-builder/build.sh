@@ -14,11 +14,10 @@ virt-builder \
     --install dhcpcd5,sudo,vim,apt-transport-https,bash-completion,docker-ce \
     --timezone Europe/London \
     --ssh-inject root:file:yubikey.pub \
-    --edit '/etc/ssh/sshd_config:s/^#PermitEmptyPasswords no/PermitEmptyPasswords yes/' \
-    --firstboot-command 'useradd -s /bin/bash -m -G sudo -p "" admin ; chage -d 0 admin' \
+    --firstboot-command 'useradd -s /bin/bash -m -G adm,docker,sudo -p "Docker2018" admin' \
     --link '/etc/systemd/system/ssh-keygen.service:/etc/systemd/system/multi-user.target.wants/ssh-keygen.service' \
     --link '/lib/systemd/system/serial-getty@.service:/etc/systemd/system/getty.target.wants/serial-getty@ttyS0.service' \
-    --size 20G -o $temp $os
+    --size 10G -o $temp $os
 
 virt-sparsify --inplace $temp
 
