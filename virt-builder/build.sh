@@ -6,7 +6,7 @@ cache=/WDZBA365/archives/virt-builder
 
 virt-builder \
     --cache $cache \
-    --install dhcpcd5 sudo \
+    --install "dhcpcd5 sudo" \
     --upload interfaces:/etc/network/interfaces \
     --upload issue:/etc/issue \
     --upload docker.keyring:/etc/apt/trusted.gpg.d/docker.gpg \
