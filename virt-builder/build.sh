@@ -7,7 +7,6 @@ cache=/WDZBA365/archives/virt-builder
 virt-builder \
     --cache $cache \
     --install dhcpcd5 \
-    --upload admin.sudoers:/etc/sudoers.d/admin \
     --upload interfaces:/etc/network/interfaces \
     --upload ssh-keygen.service:/etc/systemd/system/ssh-keygen.service \
     --firstboot-command 'useradd -m -G sudo -p "" admin ; chage -d 0 admin' \
