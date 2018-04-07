@@ -2,7 +2,7 @@
 temp=$(mktemp )
 date=$(date +%Y%m%d-%H%M)
 os=debian-9
-cache=/WDZBA365/archives/virt-bulder
+cache=/WDZBA365/archives/virt-builder
 
 virt-builder \
     --cache $cache \
