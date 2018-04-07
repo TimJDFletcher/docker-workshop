@@ -8,6 +8,8 @@ virt-builder \
     --cache $cache \
     --install dhcpcd5 \
     --upload interfaces:/etc/network/interfaces \
+    --upload issue:/etc/issue \
+    --upload docker.list:/etc/apt/sources.list.d/docker.list \
     --upload ssh-keygen.service:/etc/systemd/system/ssh-keygen.service \
     --firstboot-command 'useradd -m -G sudo -p "" admin ; chage -d 0 admin' \
     --link '/etc/systemd/system/ssh-keygen.service:/etc/systemd/system/multi-user.target.wants/ssh-keygen.service' \
