@@ -12,6 +12,7 @@ virt-builder \
     --upload files/issue:/etc/issue \
     --upload files/docker.keyring:/etc/apt/trusted.gpg.d/docker.gpg \
     --upload files/docker.list:/etc/apt/sources.list.d/docker.list \
+    --upload files/docker.apt.pin:/etc/apt/preferences.d/docker \
     --upload files/ssh-keygen.service:/etc/systemd/system/ssh-keygen.service \
     --copy-in ../workshop-scripts/:/opt \
     --install dhcpcd5,sudo,vim,apt-transport-https,bash-completion \
