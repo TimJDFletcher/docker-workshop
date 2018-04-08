@@ -13,7 +13,7 @@ virt-builder \
     --upload files/docker.keyring:/etc/apt/trusted.gpg.d/docker.gpg \
     --upload files/docker.list:/etc/apt/sources.list.d/docker.list \
     --upload files/ssh-keygen.service:/etc/systemd/system/ssh-keygen.service \
-    --copy-in workshop/:/opt/workshop/ \
+    --copy-in workshop/:/opt \
     --install dhcpcd5,sudo,vim,apt-transport-https,bash-completion \
     --edit "/boot/grub/grub.cfg:s/vda/sda/" \
     --timezone Europe/London \
