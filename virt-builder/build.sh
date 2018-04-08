@@ -15,7 +15,7 @@ virt-builder \
     --upload files/docker.apt.pin:/etc/apt/preferences.d/docker \
     --upload files/ssh-keygen.service:/etc/systemd/system/ssh-keygen.service \
     --copy-in ../workshop-scripts/:/opt \
-    --install dhcpcd5,sudo,vim,apt-transport-https,bash-completion \
+    --install dhcpcd5,sudo,vim,curl,ca-certificates,apt-transport-https,bash-completion \
     --edit "/boot/grub/grub.cfg:s/vda/sda/" \
     --timezone Europe/London \
     --ssh-inject root:file:files/yubikey.pub \
