@@ -1,5 +1,5 @@
 <domain type='kvm'>
-    <name>dockervm</name>
+    <name>%VMNAME%</name>
     <memory unit='GiB'>2</memory>
     <vcpu placement='static'>1</vcpu>
     <os>
@@ -19,7 +19,7 @@
         <emulator>/usr/bin/kvm</emulator>
         <disk type='block' device='disk'>
             <driver name='qemu' type='raw' cache='none' io='native' discard='unmap'/>
-            <source dev='/var/lib/libvirt/images/dockervm.raw'/>
+            <source dev='/var/lib/libvirt/images/%VMNAME%.raw'/>
             <target dev='sda' bus='scsi'/>
             <address type='drive' controller='0' bus='0' target='0' unit='0'/>
         </disk>
