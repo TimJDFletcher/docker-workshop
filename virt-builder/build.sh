@@ -27,11 +27,10 @@ virt-builder \
 
 virt-sparsify --inplace $temp
 
-pigz -c $temp > /tmp/${os}-${date}.raw.gz
+pigz --rsyncable --stdout $temp > /tmp/${os}-${date}.raw.gz
 
-bmaptool create -o /tmp/${os}-${date}.bmap $temp
+bmaptool create --output /tmp/${os}-${date}.bmap $temp
 
-sha256sum /tmp/${os}-${date}.bmap /tmp/${os}-${date}.raw.gz
+sha256sum /tmp/${os}-${date}.bmap /tmp/${os}-${date}.raw.gz > /tmp/${os}-${date}.sha256sum
 
 rm $temp
-
