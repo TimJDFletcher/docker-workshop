@@ -15,6 +15,7 @@ virt-builder \
     --upload files/docker.apt.pin:/etc/apt/preferences.d/docker \
     --upload files/backports.list:/etc/apt/sources.list.d/backports.list \
     --upload files/ssh-keygen.service:/etc/systemd/system/ssh-keygen.service \
+    --upload files/sysctl-no-ipv6.conf:/etc/sysctl.d/disable-ipv6.conf \
     --copy-in ../workshop-scripts/:/opt \
     --install dhcpcd5,sudo,vim,curl,ca-certificates,apt-transport-https,bash-completion \
     --edit "/boot/grub/grub.cfg:s/vda/sda/" \
