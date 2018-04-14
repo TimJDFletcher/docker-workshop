@@ -16,8 +16,8 @@ virt-builder \
     --upload files/ssh-keygen.service:/etc/systemd/system/ssh-keygen.service \
     --update \
     --install dhcpcd5,sudo,vim,curl,ca-certificates,apt-transport-https,bash-completion \
-    --delete /var/cache/apt/archives/* \
-    --delete /var/lib/apt/lists/* \
+    --delete '/var/cache/apt/archives/*' \
+    --delete '/var/lib/apt/lists/*' \
     --edit "/boot/grub/grub.cfg:s/vda/sda/" \
     --copy-in ../workshop-scripts/:/opt \
     --firstboot files/install-docker.sh \
