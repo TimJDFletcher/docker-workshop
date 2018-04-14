@@ -30,14 +30,11 @@ virt-builder \
     --link "/lib/systemd/system/serial-getty@.service:/etc/systemd/system/getty.target.wants/serial-getty@ttyS0.service" \
     --format $format --size 10G -o $temp $os
 
+virt-sparsify --inplace $temp
+
 if [ $format = raw ] ; then
-    virt-sparsify --inplace $temp
     bmaptool create --output /tmp/${os}-${date}.bmap $temp
-    sha256sum /tmp/${os}-${date}.bmap /tmp/${os}-${date}.${format}.gz > /tmp/${os}-${date}.sha256sum
-    pigz --rsyncable --stdout $temp > /tmp/${os}-${date}.${format}.gz
-    rm $temp
-else
-    mv $temp /tmp/${os}-${date}.${format}
-    sha256sum /tmp/${os}-${date}.${format} > /tmp/${os}-${date}.sha256sum
-    rm $temp
 fi
+
+pigz --rsyncable --stdout $temp > /tmp/${os}-${date}.${format}.gz
+rm $temp
