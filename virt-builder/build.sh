@@ -19,7 +19,7 @@ virt-builder \
     --copy-in ../workshop-scripts/:/opt \
     --firstboot files/install-docker.sh \
     --firstboot files/create-user.sh \
-    --firstboot files/install-docker.sh \
+    --firstboot files/reboot-check.sh \
     --timezone Europe/London \
     --ssh-inject root:file:files/yubikey.pub \
     --link "/etc/systemd/system/ssh-keygen.service:/etc/systemd/system/multi-user.target.wants/ssh-keygen.service" \
