@@ -16,11 +16,9 @@ virt-builder \
     --upload files/sysctl-no-ipv6.conf:/etc/sysctl.d/disable-ipv6.conf \
     --upload files/ssh-keygen.service:/etc/systemd/system/ssh-keygen.service \
     --update \
-    --install sudo,ca-certificates,apt-transport-https \
+    --install sudo,dhcpcd5,ca-certificates,apt-transport-https \
     --delete '/var/cache/apt/archives/*' \
     --delete '/var/lib/apt/lists/*' \
-    --edit '/boot/grub/grub.cfg:s/^GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="console=ttyS0,115200n8 net.ifnames=0"' \
-    --run-command /usr/sbin/update-grub \
     --edit "/boot/grub/grub.cfg:s/vda/sda/" \
     --copy-in ../workshop-scripts/:/opt \
     --firstboot files/install-packages.sh \
