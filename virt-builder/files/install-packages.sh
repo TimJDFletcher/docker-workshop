@@ -1,7 +1,7 @@
 #!/bin/sh -e
 DEBIAN_FRONTEND=noninteractive
 APT="apt-get --yes --no-install-recommends"
-PACKAGES="docker-ce"
+PACKAGES="docker-ce git vim curl bash-completion"
 count=0
 
 while ! ip route get 8.8.8.8 ; do 
