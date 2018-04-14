@@ -7,7 +7,7 @@ while ! ip route get 8.8.8.8 ; do
     sleep 3
     count=$((count+1))
     [ $count -gt 10 ] && break
-do
+done
 $APT update
 $APT dist-upgrade
 $APT install docker-ce
