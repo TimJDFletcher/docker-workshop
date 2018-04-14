@@ -20,7 +20,7 @@ virt-builder \
     --delete '/var/lib/apt/lists/*' \
     --edit "/boot/grub/grub.cfg:s/vda/sda/" \
     --copy-in ../workshop-scripts/:/opt \
-    --firstboot files/install-docker.sh \
+    --firstboot files/install-packages.sh \
     --firstboot files/create-user.sh \
     --firstboot files/reboot-check.sh \
     --timezone Europe/London \
