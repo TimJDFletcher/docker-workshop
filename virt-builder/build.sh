@@ -27,7 +27,7 @@ virt-builder \
     --ssh-inject root:file:files/yubikey.pub \
     --link "/etc/systemd/system/ssh-keygen.service:/etc/systemd/system/multi-user.target.wants/ssh-keygen.service" \
     --link "/lib/systemd/system/serial-getty@.service:/etc/systemd/system/getty.target.wants/serial-getty@ttyS0.service" \
-    --size 10G -o $temp $os
+    --format qcow2 --size 10G -o $temp $os
 
 virt-sparsify --inplace $temp
 
