@@ -3,6 +3,7 @@ temp=$(mktemp )
 date=$(date +%Y%m%d-%H%M)
 os=debian-9
 cache=/WDZBA365/archives/virt-builder
+format=qcow2
 
 virt-builder \
     --cache $cache \
@@ -27,14 +28,16 @@ virt-builder \
     --ssh-inject root:file:files/yubikey.pub \
     --link "/etc/systemd/system/ssh-keygen.service:/etc/systemd/system/multi-user.target.wants/ssh-keygen.service" \
     --link "/lib/systemd/system/serial-getty@.service:/etc/systemd/system/getty.target.wants/serial-getty@ttyS0.service" \
-    --format qcow2 --size 10G -o $temp $os
+    --format $format --size 10G -o $temp $os
 
-virt-sparsify --inplace $temp
-
-pigz --rsyncable --stdout $temp > /tmp/${os}-${date}.raw.gz
-
-bmaptool create --output /tmp/${os}-${date}.bmap $temp
-
-sha256sum /tmp/${os}-${date}.bmap /tmp/${os}-${date}.raw.gz > /tmp/${os}-${date}.sha256sum
-
-rm $temp
+if [ $format = raw ] ; then
+    virt-sparsify --inplace $temp
+    bmaptool create --output /tmp/${os}-${date}.bmap $temp
+    sha256sum /tmp/${os}-${date}.bmap /tmp/${os}-${date}.${format}.gz > /tmp/${os}-${date}.sha256sum
+    pigz --rsyncable --stdout $temp > /tmp/${os}-${date}.${format}.gz
+    rm $temp
+else
+    mv $temp /tmp/${os}-${date}.${format}
+    sha256sum /tmp/${os}-${date}.${format} > /tmp/${os}-${date}.sha256sum
+    rm $temp
+fi
