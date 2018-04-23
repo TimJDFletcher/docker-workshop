@@ -8,6 +8,10 @@
   async: 600
   poll: 10
 
+- name: Clean apt caches
+  command: apt-get clean
+  changed_when: false
+
 - name: Check if reboot is required
   stat:
     path: /var/run/reboot-required
