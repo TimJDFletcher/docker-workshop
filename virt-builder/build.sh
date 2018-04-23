@@ -15,7 +15,7 @@ virt-builder \
     --upload files/backports.list:/etc/apt/sources.list.d/backports.list \
     --upload files/sysctl-no-ipv6.conf:/etc/sysctl.d/disable-ipv6.conf \
     --upload files/ssh-keygen.service:/etc/systemd/system/ssh-keygen.service \
-    --install sudo,dhcpcd5,ca-certificates,apt-transport-https \
+    --install sudo,dhcpcd5,ca-certificates,apt-transport-https,open-vm-tools \
     --delete '/var/cache/apt/archives/*' \
     --delete '/var/lib/apt/lists/*' \
     --edit "/boot/grub/grub.cfg:s/vda/sda/" \
