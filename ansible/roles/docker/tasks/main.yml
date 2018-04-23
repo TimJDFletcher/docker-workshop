@@ -6,3 +6,14 @@
     state: latest
   async: 600
   poll: 10
+
+- name: Ensure rsync is installed
+  apt:
+    name: rsync
+    state: present
+
+- name: Copy the workshop scripts up
+  synchronize:
+    src: ../workshop-scripts/
+    dest: /opt/workshop-scripts/
+    use_ssh_args: yes
