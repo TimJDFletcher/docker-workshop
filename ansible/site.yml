@@ -5,4 +5,4 @@
     - role: network
     - role: debian-bootstrap
     - role: update
-
+    - role: docker

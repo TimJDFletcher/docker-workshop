@@ -14,3 +14,18 @@
     name: dhcpcd
     state: stopped
     enabled: false
+
+- name: Remove dhcpcd
+  apt:
+    name: dhcpcd5
+    state: absent
+
+- name: Set the hostname for boot
+  template:
+    src: hostname.j2
+    dest: /etc/hostname
+
+- name: Set hostname
+  command: "hostname {{ hostname }}"
+  when:
+    - (ansible_fqdn != hostname)
