@@ -1,0 +1,7 @@
+auto ens192
+iface ens192 inet static
+    address {{ ansible_host }}
+    netmask 255.255.254.0
+    gateway 129.215.11.254
+    dns-nameservers 129.215.205.191
+    dns-search ed.ac.uk

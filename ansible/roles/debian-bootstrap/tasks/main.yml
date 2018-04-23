@@ -1,0 +1,22 @@
+---
+- name: Install python 2
+  raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+  register: command_result
+  changed_when:
+    - '"The following NEW packages will be installed" in command_result.stdout'
+
+- name: Check if the basic packages are installed
+  raw: dpkg-query -l {{ bootstrap_basic_packages }}
+  register: debian_package_check
+  changed_when: false
+    
+- name: Run apt-get update to pull latest indices
+  raw: apt-get update
+  when: debian_package_check.stdout.find('no packages found') != -1
+
+- name: Install ansible support packages with raw apt commands
+  raw: apt-get -y install {{ bootstrap_basic_packages }}
+  when: debian_package_check.stdout.find('no packages found') != -1
+  register: command_result
+  changed_when:
+    - '"The following NEW packages will be installed" in command_result.stdout'

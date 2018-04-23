@@ -1,0 +1,4 @@
+---
+# defaults file for bootstrap
+
+bootstrap_basic_packages: "python-apt apt-utils sudo"

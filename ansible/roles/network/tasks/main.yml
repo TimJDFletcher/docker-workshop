@@ -1,0 +1,16 @@
+---
+# tasks file for roles/network
+
+- name: Template the network config
+  template:
+    src: ens192.j2
+    dest: /etc/network/interfaces.d/ens192
+    owner: root
+    group: root
+    mode: 0644
+     
+- name: Disable dhcpcd
+  service:
+    name: dhcpcd
+    state: stopped
+    enabled: false

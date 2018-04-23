@@ -1,0 +1,9 @@
+- name: debian-bootstrap
+  scm: git
+  src: carbon-vpn:/exports/git/ansible-roles/debian-bootstrap
+  version: master
+
+- name: sshd
+  scm: git
+  src: git@github.com:TimJDFletcher/ansible-sshd.git
+  version: RemoveDeprecatedOptions
