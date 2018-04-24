@@ -21,8 +21,9 @@
 - name: Create the workshop git repos
   file:
     path: "/opt/{{ item }}"
-    user: admin
+    owner: admin
     group: admin
+    recurse: true
   with_items:
     - docker-workshop
     - docker-scripts
@@ -31,6 +32,7 @@
   git:
     dest: "/opt/{{ item }}"
     repo: "https://github.com/TimJDFletcher/{{ item }}"
+    force: yes
   with_items:
     - docker-workshop
     - docker-scripts
