@@ -17,6 +17,15 @@
     src: ../workshop-scripts/
     dest: /opt/workshop-scripts/
     use_ssh_args: yes
+    
+- name: Create the workshop git repos
+  file:
+    path: "/opt/{{ item }}"
+    user: admin
+    group: admin
+  with_items:
+    - docker-workshop
+    - docker-scripts
 
 - name: Pull the workshop git repos
   git:
@@ -25,6 +34,7 @@
   with_items:
     - docker-workshop
     - docker-scripts
+  become_user: admin
 
 - name: Add the admin user to the docker group
   user:
