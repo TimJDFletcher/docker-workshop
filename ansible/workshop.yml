@@ -1,6 +1,5 @@
 ---
 - hosts: all
   gather_facts: true
-  serial: 4
   roles:
     - role: docker

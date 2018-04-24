@@ -1,2 +1,2 @@
 ansible_user: root
-ansible_ssh_common_args: '-o ProxyCommand="ssh v1tfletc@fireworks.is.ed.ac.uk -W %h:%p"'
+# ansible_ssh_common_args: '-o ProxyCommand="ssh v1tfletc@fireworks.is.ed.ac.uk -W %h:%p"'

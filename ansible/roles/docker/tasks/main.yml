@@ -17,3 +17,11 @@
     src: ../workshop-scripts/
     dest: /opt/workshop-scripts/
     use_ssh_args: yes
+
+- name: Pull the workshop git repos
+  git:
+    dest: "/opt/{{ item }}"
+    repo: "https://github.com/TimJDFletcher/{{ item }}"
+  with_items:
+    - docker-workshop
+    - docker-scripts
