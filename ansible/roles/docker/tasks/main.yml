@@ -5,24 +5,19 @@
     name: docker-ce
     state: latest
   async: 600
-  poll: 10
+  poll: 5
 
-- name: Ensure rsync is installed
-  apt:
-    name: rsync
-    state: present
-
-- name: Copy the workshop scripts up
-  synchronize:
-    src: ../workshop-scripts/
-    dest: /opt/workshop-scripts/
-    use_ssh_args: yes
+- name: Remove the workshop scripts as they are in git
+  file:
+    path: /opt/workshop-scripts
+    state: absent
     
 - name: Create the workshop git repos
   file:
     path: "/opt/{{ item }}"
     owner: admin
     group: admin
+    state: directory
     recurse: true
   with_items:
     - docker-workshop
@@ -51,3 +46,27 @@
     - vim
     - curl
     - tcpdump
+
+- name: Install docker-compose
+  get_url:
+    url: https://github.com/docker/compose/releases/download/1.21.0/docker-compose-Linux-x86_64
+    dest: /usr/local/bin/docker-compose
+    checksum: "sha256:af639f5e9ca229442c8738135b5015450d56e2c1ae07c0aaa93b7da9fe09c2b0"
+    mode: 0755
+    owner: root
+    group: root
+    
+- name: Download rancher-compose
+  unarchive:
+    src: https://releases.rancher.com/compose/v0.12.5/rancher-compose-linux-amd64-v0.12.5.tar.gz
+    dest: /tmp
+    remote_src: yes
+
+- name: Install rancher-compose
+  copy:
+    remote_src: yes
+    src: /tmp/rancher-compose-v0.12.5/rancher-compose
+    dest: /usr/local/bin/rancher-compose
+    mode: 0755
+    owner: root
+    group: root

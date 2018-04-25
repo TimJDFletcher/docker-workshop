@@ -8,3 +8,4 @@ host *
     ControlMaster           auto
     ControlPath             ~/.ssh/.ansible-%r@%h:%p
     ControlPersist          10m
+    ConnectTimeout          10s
