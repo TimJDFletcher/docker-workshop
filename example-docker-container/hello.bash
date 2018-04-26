@@ -1,4 +1,5 @@
 #!/bin/bash
+exit 1
 case $1 in 
     -hello)
         echo Hello World
